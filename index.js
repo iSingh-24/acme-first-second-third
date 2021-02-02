@@ -1,4 +1,9 @@
 const slots = ['first', 'second', 'third'];
+const lists = document.getElementById("lists");
+const divFirst = document.getElementById("first");
+const divSecond = document.getElementById("second");
+const divThird = document.getElementById("third");
+
 
 const users = [
     {id: 1, name: 'moe', slot: 'first'},
@@ -7,38 +12,29 @@ const users = [
     {id: 4, name: 'lucy', slot: 'third', selected: true} 
 ]
 
-const divFirst = document.getElementById("first");
-const divSecond = document.getElementById("second");
-const divThird = document.getElementById("third");
-
-let divArr = [divFirst,divSecond,divThird];
-
 //populate users 
 
 for(let i = 0 ; i < users.length; i++){
-    let currentPerson = users[i]; 
-    let child = document.createElement("h3"); 
+    const currentPerson = users[i]; 
+    const child = document.createElement("h3"); 
     child.innerHTML = currentPerson.name; 
     child.id = i + 1; 
+    
     if(currentPerson.selected === true){
        child.className = 'orange';
     }
+
     if(currentPerson.slot === 'first'){
-        divArr[0].appendChild(child);
+        divFirst.appendChild(child);
     }else if(currentPerson.slot === 'second'){
-        divArr[1].appendChild(child);
+        divSecond.appendChild(child);
     }else{
-        divArr[2].appendChild(child);
+        divThird.appendChild(child);
     }
 }
 
-
-
-const lists = document.getElementById("lists");
-
-lists.addEventListener("click",function(ev){
+lists.addEventListener("click",(ev)=>{
     const target = ev.target; 
-    //console.log(target.tagName)
     if(target.tagName === 'H3'){
         if(target.className.length){
             target.className = "";
@@ -49,26 +45,15 @@ lists.addEventListener("click",function(ev){
     
 })
 
-// const classesToChange = [...divThird.querySelectorAll(".orange")];
-    
-//console.log(classesToChange.length)
-const buttons = [...document.getElementsByClassName('buttons')];
-
-// const testChild = document.createElement("h3");
-// testChild.innerHTML = "Amy";
-
-// divFirst.appendChild(testChild);
-
-divFirst.addEventListener("click", function(ev){
+divFirst.addEventListener("click", (ev)=>{
     const target = ev.target; 
     const classList = [...target.classList]; 
-    const classesToChange = [...divFirst.querySelectorAll(".orange")];
+    const selectedChildrenNodes = [...divFirst.querySelectorAll(".orange")];
     if(target.tagName === "BUTTON" && classList.includes('orange')){
-        for(let i = 0; i < classesToChange.length; i++){
-            // console.log(classesToChange[i].tagName);
-            if(classesToChange[i].tagName !== "BUTTON"){
-                const temp = classesToChange[i];
-                  divFirst.removeChild(classesToChange[i])
+        for(let i = 0; i < selectedChildrenNodes.length; i++){
+            if(selectedChildrenNodes[i].tagName !== "BUTTON"){
+                const temp = selectedChildrenNodes[i];
+                  divFirst.removeChild(selectedChildrenNodes[i])
                   divSecond.appendChild(temp);
             }
         }
@@ -76,19 +61,18 @@ divFirst.addEventListener("click", function(ev){
     
 })
 
-divSecond.addEventListener("click", function(ev){
+divSecond.addEventListener("click", (ev)=>{
     const target = ev.target; 
     const classList = [...target.classList]; 
-    const classesToChange = [...divSecond.querySelectorAll(".orange")];
+    const selectedChildrenNodes = [...divSecond.querySelectorAll(".orange")];
     
     //to the right
     
     if(target.tagName === "BUTTON" && classList.includes('orange') && classList.includes('right')){
-        for(let i = 0; i < classesToChange.length; i++){
-            console.log(classesToChange[i].tagName);
-            if(classesToChange[i].tagName !== "BUTTON"){
-                const temp = classesToChange[i];
-                  divSecond.removeChild(classesToChange[i])
+        for(let i = 0; i < selectedChildrenNodes.length; i++){
+            if(selectedChildrenNodes[i].tagName !== "BUTTON"){
+                const temp = selectedChildrenNodes[i];
+                  divSecond.removeChild(selectedChildrenNodes[i])
                   divThird.appendChild(temp);
             }
         }
@@ -97,27 +81,25 @@ divSecond.addEventListener("click", function(ev){
 //to the left
 
     if(target.tagName === "BUTTON" && classList.includes('orange') && classList.includes("left")){
-        for(let i = 0; i < classesToChange.length; i++){
-          //  console.log(classesToChange[i].tagName);
-            if(classesToChange[i].tagName !== "BUTTON"){
-                const temp = classesToChange[i];
-                  divSecond.removeChild(classesToChange[i])
+        for(let i = 0; i < selectedChildrenNodes.length; i++){
+            if(selectedChildrenNodes[i].tagName !== "BUTTON"){
+                const temp = selectedChildrenNodes[i];
+                  divSecond.removeChild(selectedChildrenNodes[i])
                   divFirst.appendChild(temp);
             }
         }
     }
 })
 
-divThird.addEventListener("click", function(ev){
+divThird.addEventListener("click", (ev)=>{
     const target = ev.target; 
     const classList = [...target.classList]; 
-    const classesToChange = [...divThird.querySelectorAll(".orange")];
+    const selectedChildrenNodes = [...divThird.querySelectorAll(".orange")];
     if(target.tagName === "BUTTON" && classList.includes('orange')){
-        for(let i = 0; i < classesToChange.length; i++){
-       //     console.log(classesToChange[i].tagName);
-            if(classesToChange[i].tagName !== "BUTTON"){
-                const temp = classesToChange[i];
-                  divThird.removeChild(classesToChange[i])
+        for(let i = 0; i < selectedChildrenNodes.length; i++){
+            if(selectedChildrenNodes[i].tagName !== "BUTTON"){
+                const temp = selectedChildrenNodes[i];
+                  divThird.removeChild(selectedChildrenNodes[i])
                   divSecond.appendChild(temp);
             }
         }

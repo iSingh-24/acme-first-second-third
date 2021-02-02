@@ -11,46 +11,41 @@ div{
 
 #first{
     display: flex;
-    /* padding-top: 1rem;
-    padding-bottom: 20rem;
-    padding-left: 1rem;
-    padding-right: 1rem; */
     margin :inherit;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 12rem;
     flex-direction: column;
     justify-content: flex-start;
-    border: 1px solid orange;
-    padding-bottom: 50%;
-    
+    border: 1px solid orange; 
+    padding-bottom: 50px;
 }
 
 #second{
     display: flex;
     margin: inherit;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     justify-content: flex-start;
     width: 12rem;
     flex-direction: column;
     border: 1px solid orange;
-    padding-bottom: 50%;
+    padding-bottom: 50px;
 }
 
 #third{
     display:flex;
     margin: inherit;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 12rem;
     flex-direction: column;
     justify-content: flex-start;
     border: 1px solid orange;
-    padding-bottom: 50%;
+    padding-bottom: 50px;
 }
 
 button{
@@ -69,9 +64,14 @@ h3{
     background-color: whitesmoke;
     line-height: 30px;
     margin:1px;
+    text-align: center;
 }
 
 .orange {
     background-color: orange;
 }
 
+button:hover {
+    background-color: pink;
+    cursor: pointer;
+}
