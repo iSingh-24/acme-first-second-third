@@ -7,16 +7,11 @@ const users = [
     {id: 4, name: 'lucy', slot: 'third', selected: true} 
 ]
 
-//if slot is first place in div that has id first
-//if slot is second place them in div id second 
-
 const divFirst = document.getElementById("first");
 const divSecond = document.getElementById("second");
 const divThird = document.getElementById("third");
 
 let divArr = [divFirst,divSecond,divThird];
-
-//divFirst.appendChild(testChild)
 
 //populate users 
 
@@ -59,10 +54,10 @@ lists.addEventListener("click",function(ev){
 //console.log(classesToChange.length)
 const buttons = [...document.getElementsByClassName('buttons')];
 
-const testChild = document.createElement("h3");
-testChild.innerHTML = "vinay";
+// const testChild = document.createElement("h3");
+// testChild.innerHTML = "Amy";
 
-divFirst.appendChild(testChild);
+// divFirst.appendChild(testChild);
 
 divFirst.addEventListener("click", function(ev){
     const target = ev.target; 
@@ -70,7 +65,7 @@ divFirst.addEventListener("click", function(ev){
     const classesToChange = [...divFirst.querySelectorAll(".orange")];
     if(target.tagName === "BUTTON" && classList.includes('orange')){
         for(let i = 0; i < classesToChange.length; i++){
-            console.log(classesToChange[i].tagName);
+            // console.log(classesToChange[i].tagName);
             if(classesToChange[i].tagName !== "BUTTON"){
                 const temp = classesToChange[i];
                   divFirst.removeChild(classesToChange[i])
@@ -80,8 +75,6 @@ divFirst.addEventListener("click", function(ev){
     }
     
 })
-
-
 
 divSecond.addEventListener("click", function(ev){
     const target = ev.target; 
@@ -103,19 +96,34 @@ divSecond.addEventListener("click", function(ev){
     
 //to the left
 
-    if(target.tagName === "BUTTON" && classList.includes('orange')){
+    if(target.tagName === "BUTTON" && classList.includes('orange') && classList.includes("left")){
         for(let i = 0; i < classesToChange.length; i++){
-            console.log(classesToChange[i].tagName);
+          //  console.log(classesToChange[i].tagName);
             if(classesToChange[i].tagName !== "BUTTON"){
                 const temp = classesToChange[i];
                   divSecond.removeChild(classesToChange[i])
-                  divThird.appendChild(temp);
+                  divFirst.appendChild(temp);
             }
         }
     }
-
-
-
 })
+
+divThird.addEventListener("click", function(ev){
+    const target = ev.target; 
+    const classList = [...target.classList]; 
+    const classesToChange = [...divThird.querySelectorAll(".orange")];
+    if(target.tagName === "BUTTON" && classList.includes('orange')){
+        for(let i = 0; i < classesToChange.length; i++){
+       //     console.log(classesToChange[i].tagName);
+            if(classesToChange[i].tagName !== "BUTTON"){
+                const temp = classesToChange[i];
+                  divThird.removeChild(classesToChange[i])
+                  divSecond.appendChild(temp);
+            }
+        }
+    }
+    
+})
+
 
 
